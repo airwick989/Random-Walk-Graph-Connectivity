@@ -27,10 +27,9 @@ class GraphWalkVisualizer:
     - isMultiple, fig, and walk_count parameters are used by the drawMultiWalk function and do not ever need to be set by the user
     """
     def drawWalk(self, start_node, num_steps, isMultiple=False, fig=None, walk_count=0, path=[]):
-        grid_size = int(len(path)**0.5) + 1  # Adjust grid size (for plotting subplots) based on the length of the path
-        
         #If multiple walks are being visualized, draw subplots instead of a single figure
         if isMultiple:
+            grid_size = int(len(path)**0.5) + 1  # Adjust grid size (for plotting subplots) based on the length of the path
             print(f"Random Walk {walk_count}: {path}")
             ax = fig.add_subplot(grid_size, grid_size, walk_count)  #initalize subplot
             ax.set_title(f"Random Walk {walk_count}")
