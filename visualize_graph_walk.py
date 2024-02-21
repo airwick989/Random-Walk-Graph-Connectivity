@@ -26,10 +26,7 @@ class GraphWalkVisualizer:
     - Function takes a start node and max number of steps as required parameters
     - isMultiple, fig, and walk_count parameters are used by the drawMultiWalk function and do not ever need to be set by the user
     """
-    def drawWalk(self, start_node, num_steps, isMultiple=False, fig=None, walk_count=0):
-        walker = RandomWalker(self.graph, start_node)   #Initialize a walker object
-        path = walker.walk(num_steps)   #Obtain the path traversed by the walker
-
+    def drawWalk(self, start_node, num_steps, isMultiple=False, fig=None, walk_count=0, path=[]):
         grid_size = int(len(path)**0.5) + 1  # Adjust grid size (for plotting subplots) based on the length of the path
         
         #If multiple walks are being visualized, draw subplots instead of a single figure
@@ -45,6 +42,8 @@ class GraphWalkVisualizer:
             nx.draw_networkx_edges(self.graph.to_directed(), self.pos, edgelist=list(zip(path, path[1:])), edge_color='r', width=2, ax=ax) #Draw directed edges for the path walked
         else:
             #If only one walk is being visualized ...
+            walker = RandomWalker(self.graph, start_node)   #Initialize a walker object
+            path = walker.walk(num_steps)   #Obtain the path traversed by the walker
             print(f"Random Walk Path: {path}")
             self.drawGraph()    #Draw the graph using the class function
             nx.draw_networkx_edges(self.graph.to_directed(), self.pos, edgelist=list(zip(path, path[1:])), edge_color='r', width=2) #Draw directed edges for the path walked
@@ -61,7 +60,7 @@ class GraphWalkVisualizer:
         
         #For the number of paths there are, draw the walk in a subplot using the drawWalk class function
         for i, path in enumerate(paths):
-            self.drawWalk(start_node, num_steps_per_walk, True, fig, i + 1)
+            self.drawWalk(start_node, num_steps_per_walk, True, fig, i + 1, path)
 
     #Function which displays all the visualizations which have been drawen
     def visualize(self):
