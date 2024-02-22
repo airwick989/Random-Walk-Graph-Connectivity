@@ -3,8 +3,8 @@ from visualize_graph_walk import GraphWalkVisualizer
 import graph_functions as gf
 
 #Initialize a directed networkx graph with many nodes and edges
-G = nx.DiGraph()
-G.add_edges_from([(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7), (4, 8), (4, 9), (5, 10), (5, 11), (6, 12), (6, 13), (7, 14), (7, 15), (8, 16), (8, 17), (9, 18), (9, 19), (10, 20)])
+G = nx.DiGraph()    #IMPORTANT TO CHANGE!!!
+G.add_edges_from(gf.preMadeGraphs['many-nodes'])
 
 #Set the start node, max number of steps, and number of walks
 start_node = 1
