@@ -5,11 +5,12 @@ import networkx as nx
 - Includes varying examples like connected-directed, disconnected-undirected, etc.
 """
 preMadeGraphs = {
-    "con-undir": [(1, 2), (2, 3), (3, 4), (4, 1), (2, 4)],
-    "discon-undir": [(1, 2), (3, 4), (5, 6)],
+    "con-undir": [(1, 2), (2, 3), (3, 4), (4, 1), (2, 4), (3, 1)],
+    "discon-undir": [(1, 2), (3, 4), (5, 6), (7, 5), (8, 6), (6, 9), (1, 5)],
     "con-dir": [(1, 2), (2, 3), (3, 1), (3, 4), (4, 5), (5, 2)],
-    "discon-dir": [(1, 2), (2, 3), (3, 1), (4, 5), (5, 6)],
-    "weakcon-dir": [(1, 2), (2, 3), (3, 1), (2, 5), (4, 5), (5, 6)]
+    "discon-dir": [(1, 2), (2, 3), (3, 1), (4, 5), (5, 6), (6, 4)],
+    "weakcon-dir": [(1, 2), (2, 3), (3, 1), (2, 5), (4, 5), (5, 6)],
+    "many-nodes": [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7), (4, 8), (4, 9), (5, 10), (5, 11), (6, 12), (6, 13), (7, 14), (7, 15), (8, 16), (8, 17), (9, 18), (9, 19), (10, 20)],
 }
 
 """
@@ -51,4 +52,4 @@ def printConnectivityInsights(graph):
     else:
         #If the graph is not directed ...
         print(f"Connected Components: {getConnectedComponents(graph)}") #Obtain and print the connected components of the graph
-        print(f"Is graph connected: {getConnectivity}") #Check and print the connectivity of the graph
+        print(f"Is graph connected: {getConnectivity(graph)}") #Check and print the connectivity of the graph
